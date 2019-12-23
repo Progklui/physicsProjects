@@ -1,0 +1,117 @@
+\documentclass[12pt,a4paper]{exam}
+
+% Edit these as appropriate
+\newcommand\hwnumber{1}                            % <-- homework number
+\newcommand\DateOfTutorium{\DTMdate{2019-12-23}}   % <-- date of tutorium
+
+% Load Preamble where settings and styles of document is defined
+\input{Preamble.tex} 
+
+\begin{document}
+
+\section*{The Brachistochrone Problem}
+
+  In the following we are going to discuss the famous Brachistochrone Problem using the method of Lagrangian mechanics. 
+
+  Our goal is to find the optimal path between two points in space. For this path the time it takes an ideal object to roll down should be as short as possible. This means we want to find the minimum of the integral
+  
+    \begin{equation}
+      t_{12} = \int_1^2 \text{d}t = \int_1^2 \frac{1}{v} \, \text{d}s, \label{eq:IntegralOne}
+    \end{equation}
+  where $v$ is the velocity at every point and $\text{d}s$ is the distance along the path. Using pythagoras we can write 
+    
+    \begin{equation}
+      \text{d} s^2 = \text{d} x^2 + \text{d} y^2 = \text{d} x^2 \left(1 + \left(\frac{\text{d} y}{\text{d} x}\right)\right) =: \text{d} x^2 \left(1 + y'^2\right). \label{eq:Distance} 
+    \end{equation}      
+  In order to find the velocity we can use conservation of the total energy $E$
+    
+    \begin{equation}
+      E = \frac{1}{2}mv^2 + mgy \overset{!}{=} 0 
+    \end{equation}
+  which can be set equal to zero when choosing the origin of our coordinate system appropriately. Thus the velocity is
+  
+    \begin{equation}
+      v = \sqrt{2gy}. \label{eq:Velocity}
+    \end{equation} 
+  Now we can plug in the expressions for $\text{d}s$, \eqref{eq:Distance} and the velocity, \eqref{eq:Velocity} into the integral of time, \eqref{eq:IntegralOne} which gets
+    
+    \begin{equation}
+      t_{12} = \int_1^2 \frac{\sqrt{1 + y'^2}}{\sqrt{2gy}} \text{d}x. \label{eq:IntegralTwo}
+    \end{equation}
+  
+  At this point we can use the tools of variational calculus. The goal is to find a function $y(x)$ which minimizes integral \eqref{eq:IntegralTwo} and thus the time it takes the object to roll down the path. Notice that the path is described by the function $y(x)$. 
+  
+  We can define the Lagrange function $\mathcal{L}$ as the integrand of \eqref{eq:IntegralTwo} 
+  
+    \begin{equation}
+      \mathcal{L}\left(y, y'\right) := \sqrt{\frac{1 + y'^2}{2gy}} \label{eq:Lagrangian}.
+    \end{equation}
+  Usually solving the Euler-Lagrange equation
+  
+    \begin{equation}
+      \frac{\partial \mathcal{L}}{\partial y} - \frac{\text{d}}{\text{d} x} \frac{\partial \mathcal{L}}{\partial y'} \overset{!}{=} 0 \label{eq:EulerLagrange}
+    \end{equation}
+  gives us the solution for $y(x)$ but since $\mathcal{L}$ is independet of $x$ ($\frac{\partial \mathcal{L}}{\partial x} = 0$) we can compute the total derivative 
+  
+    \begin{equation}
+      \begin{split}
+        \text{d} \mathcal{L} &= \frac{\partial \mathcal{L}}{\partial y} \text{d} y + \frac{\partial \mathcal{L}}{\partial y'} \text{d} y' + \frac{\partial \mathcal{L}}{\partial x} \text{d} x \\
+        \Rightarrow \frac{\text{d} \mathcal{L}}{\text{d} x} &= \frac{\partial \mathcal{L}}{\partial y} \frac{\text{d} y}{\text{d} x} + \frac{\partial \mathcal{L}}{\partial y'} \frac{\text{d} y'}{\text{d} x} + \frac{\partial \mathcal{L}}{\partial x} \\
+        \Leftrightarrow \frac{\text{d} \mathcal{L}}{\text{d} x} &= \frac{\partial \mathcal{L}}{\partial y} y' + \frac{\partial \mathcal{L}}{\partial y'} y'' + \frac{\partial \mathcal{L}}{\partial x}.
+      \end{split}
+    \end{equation}
+  Now we can insert the expression for $\frac{\partial \mathcal{L}}{\partial y}$ from \eqref{eq:EulerLagrange} and after using the product rule to rearrange the equation get
+  
+    \begin{equation}
+      \begin{split}
+        \frac{\text{d} \mathcal{L}}{\text{d} x} - y' \frac{\text{d}}{\text{d} x} \frac{\partial \mathcal{L}}{\partial y'}  - \frac{\partial \mathcal{L}}{\partial y'} y'' - \frac{\partial \mathcal{L}}{\partial x} &= 0 \\
+        \Leftrightarrow \frac{\text{d} \mathcal{L}}{\text{d} x} -  \frac{\text{d}}{\text{d} x} y' \frac{\partial \mathcal{L}}{\partial y'} - \frac{\partial \mathcal{L}}{\partial x} &= 0 \\
+        \Leftrightarrow \frac{\text{d} }{\text{d} x} \left(\mathcal{L} -   y' \frac{\partial \mathcal{L}}{\partial y'}\right) &= 0.
+      \end{split}
+    \end{equation}
+  Thus the term in brackets is a constant,
+  
+    \begin{equation}
+      \mathcal{L} -   y' \frac{\partial \mathcal{L}}{\partial y'} =: C
+    \end{equation}
+  and calculating the derivative
+  
+    \begin{equation}
+      \frac{\partial \mathcal{L}}{\partial y'} = \frac{y'}{\sqrt{2gy\left(1+y'^2\right)}}
+    \end{equation}
+  gives 
+    \begin{equation}
+      \begin{split}
+        \sqrt{\frac{1 + y'^2}{2gy}} - \frac{y'^2}{\sqrt{2gy\left(1+y'^2\right)}} &= C \\
+        \Leftrightarrow \frac{1}{\sqrt{2gy\left(1+y'^2\right)}} &= C.
+      \end{split}
+    \end{equation}
+  Let's rearrange this expression to get
+  
+    \begin{equation}
+      \begin{split}
+        y \left(1 + y'^2\right) &= \frac{1}{2gC^2} := \frac{A}{2} \\
+        \Leftrightarrow y \left(1 + \left(\frac{\text{d} y}{\text{d} x}\right)^2\right) &= \frac{A}{2}  \\
+        \Leftrightarrow \frac{\text{d} y}{\text{d} x} &= \sqrt{\frac{A}{2y} - 1}.
+      \end{split}
+    \end{equation}
+    
+  This expression is solved by 
+    
+    \begin{equation}
+      x = A \left(\phi - \sin \phi \right), y = A \left(1 - \cos \phi \right),
+    \end{equation}
+  where $A$ is some parameter. In the following is an inverted sketch of this optimized path.
+  
+  \begin{center}
+    \begin{tikzpicture}[scale=2.5]
+      \tkzInit[xmin=0,xmax=3.3,xstep=1,ymin=0,ymax=2,ystep=1]
+      \tkzAxeX[step=1]
+      \tkzAxeY[step=1]
+      \tkzFctPar[samples=100,domain=0:4*pi]{t-sin(t)}{1-cos(t)}
+    \end{tikzpicture}  
+  \end{center}
+  
+  
+  
+\end{document}

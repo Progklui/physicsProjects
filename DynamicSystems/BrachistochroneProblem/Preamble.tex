@@ -1,0 +1,108 @@
+%% ========================================================================
+%%%% List of all dependencies/packages
+%% ========================================================================
+
+\usepackage[utf8]{inputenc}
+\usepackage[useregional]{datetime2}
+\usepackage[ngerman]{babel}
+
+%% Chemistry
+\usepackage{chemfig,chemmacros}
+\chemsetup{modules = all}
+\chemsetup[redox]{explicit-sign = true}
+
+%% Maths
+\usepackage{amsmath,amssymb,amsthm,textcomp,amsfonts,amscd}
+\usepackage{mathrsfs}
+
+%% Physics
+\usepackage{siunitx}
+
+%% Graphics
+\usepackage{graphicx}
+\usepackage{tikz}
+\usepackage{rotating}
+%\usepackage{subfig}
+%\usepackage{pgfplots}
+\usepackage{tkz-fct}
+
+%% Tables and Lists
+\usepackage{enumerate}
+\usepackage{multicol}
+\usepackage[top=3cm, bottom=4.5cm, left=2.5cm, right=2.5cm]{geometry}
+\usepackage{tabu}
+\usepackage{listings}
+\usepackage{tabularx}
+
+%% Structures and Style
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{colortbl}
+\usepackage{xcolor}
+
+\usepackage{xfrac}
+\usepackage[export]{adjustbox}[2011/08/13]
+\usepackage{lastpage}
+
+\usepackage{hyperref}
+
+\hypersetup{%
+  colorlinks=true,
+  linkcolor=blue,
+  linkbordercolor={0 0 1}
+}
+
+\setlength{\parindent}{0.0in}
+\setlength{\parskip}{0.05in}
+
+
+
+%% ========================================================================
+%%%% Define styles of document (header, ...)
+%% ========================================================================
+
+\newcommand\course{Theoretische Physik - Klassische Mechanik} % name of course
+\newcommand\TutorA{\quad}           % <-- Name of Tutor #1
+\newcommand\TutorB{Florian Kluibenschedl}   % <-- Name of Tutor #2
+
+%\headheight 20pt
+\lhead[\TutorA\\\TutorB]{\TutorA\\\TutorB}                
+\chead[\textbf{\Large Variational calculus}]{\textbf{\Large Variational calculus}}
+\rhead[\DateOfTutorium]{\DateOfTutorium}
+\lfoot{\course}
+\cfoot{}
+\rfoot{\thepage}
+\headsep 1.5em
+
+\firstpageheadrule
+\runningheadrule
+
+%% ========================================================================
+%%%% Useful commands
+%% ========================================================================
+
+%% Platzhalter
+% \vspace{\stretch{1}}
+% \vspace{5mm}
+% \framebox(430,100){}
+% \framebox[\textwidth]{}
+% \fbox{\parbox{5.5in} {ff}}
+
+%% For Questions
+
+%%% General
+% \begin{questions}
+% \question Blablabla.
+% \vspace{\stretch{1}}
+% \end{questions}
+
+%%% Multiple Choice
+% \begin{oneparchoices} % just environment choices is the right one for list-like 
+% \choice First Choice
+% \end{oneparchoices}
+% \begin{checkboxes}
+% \choice First Choice 
+% \end{checkboxes}
+
+%\chemsetup[acid-base]{p-style=slanted} \pH, \pKa \par A\pch\ B\mch[3] C\fpch[2] D\fmch
